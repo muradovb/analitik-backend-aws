@@ -6,7 +6,7 @@ phases:
       java: corretto11
   build:
     commands:
-      - mvn package
+      - mvn package -Dmaven.test.skip
     post_build:
       commands:
         - echo Build completed
