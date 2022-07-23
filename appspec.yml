@@ -2,9 +2,8 @@ version: 0.0
 os: linux
 
 files:
-  -source: /
-  destination: /home/ec2-user/server
-
+  - source: /
+    destination: /home/ec2-user/server
 
 permissions:
   - object: /
@@ -14,22 +13,18 @@ permissions:
 
 hooks:
   BeforeInstall:
-     - location: scripts/server_clear.sh
-     - timeout: 300
-     - runas: ec2-user
-
+    - location: scripts/server_clear.sh
+      timeout: 300
+      runas: ec2-user
   AfterInstall:
-     - location: scripts/fix_privileges.sh
-     - timeout: 300
-     - runas: ec2-user
-
+    - location: scripts/fix_privileges.sh
+      timeout: 300
+      runas: ec2-user
   ApplicationStart:
-     - location: scripts/server_start.sh
-     - timeout: 300
-     - runas: ec2-user
-
+    - location: scripts/server_start.sh
+      timeout: 20
+      runas: ec2-user
   ApplicationStop:
-     - location: scripts/server_stop.sh
-     - timeout: 300
-     - runas: ec2-user
-
+    - location: scripts/server_stop.sh
+      timeout: 20
+      runas: ec2-user
