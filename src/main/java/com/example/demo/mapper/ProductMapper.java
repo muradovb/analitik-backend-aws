@@ -7,7 +7,7 @@ import org.mapstruct.Mapping;
 
 import java.util.UUID;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public abstract class ProductMapper {
 
 

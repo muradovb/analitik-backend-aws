@@ -7,6 +7,7 @@ import com.example.demo.model.Product;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.service.ProductService;
 import lombok.AllArgsConstructor;
+import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,12 +15,14 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-@AllArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
-    private final ProductMapper productMapper;
+    private final ProductMapper productMapper = Mappers.getMapper(ProductMapper.class);
     private final ProductRepository productRepository;
 
+    public ProductServiceImpl(ProductRepository pr) {
+        this.productRepository=pr;
+    }
     @Override
     @Transactional
     public UUID addProduct(UploadProductRequest uploadProductRequest) {
